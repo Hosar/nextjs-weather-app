@@ -1,0 +1,41 @@
+.weatherInfoMainContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 25rem;
+}
+
+.weatherInfoTitle {
+    display: flex;
+    justify-content: center;
+    min-width: 20rem; 
+    flex-wrap: nowrap; 
+    text-align: center;
+}
+
+.weatherInfoArea {
+    margin-top: 2rem; 
+    background-color: aqua;
+}
+
+.weatherInfoMarginBottom {
+    margin-bottom: 0.6rem;   
+}
+
+.weatherInfoMarginLeft {
+    margin-left: 1rem;
+}
+
+.weatherInfoDescription {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center
+}
+
+.weatherInfoIcon {
+    position: relative; 
+    width: 4rem; 
+    height: 3rem;
+}

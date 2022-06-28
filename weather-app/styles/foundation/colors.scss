@@ -1,0 +1,5 @@
+@import "./variables.scss";
+/* Global Text Colors */
+$body-text-color: var(--ds-body-text-color, $blue) !default;
+$body-bg-color: var(--ds-bg-text-color, $white) !default;
+

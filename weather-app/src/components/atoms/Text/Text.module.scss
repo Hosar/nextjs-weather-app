@@ -1,0 +1,18 @@
+@import "../../../../styles/globals.scss";
+
+.textContent {
+    font-family: $fontFamilyStandard;
+    color: $body-text-color;
+}
+
+.small {
+    font-size: 1.5rem;
+}
+
+.medium {
+    font-size: 2rem;
+}
+
+.large {
+    font-size: 4rem;
+}
