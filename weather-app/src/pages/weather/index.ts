@@ -1,1 +1,0 @@
-export { Weather as default, getServerSideProps } from './Weather';

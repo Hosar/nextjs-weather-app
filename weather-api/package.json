@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "test": "./node_modules/.bin/mocha --compilers ts:ts-node/register ./src/**/*.test.ts"
+    "test": "./node_modules/.bin/mocha --require ts-node/register ./src/**/*.test.ts"
   },
   "keywords": [],
   "author": "",
