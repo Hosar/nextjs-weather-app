@@ -5,12 +5,14 @@ const weatherProps = `
       humidity
       temp
       main
+      iconUrl
       pressure
+      city
 `;
 
 export const weatherByZipCodeQuery = gql`
   query($zipCode: String) {
-    weather: weatherByZipCodeQuery(zipCode: $zipCode) {
+    weather: weatherByZipCode(zipCode: $zipCode) {
       ${weatherProps}
     }
   }

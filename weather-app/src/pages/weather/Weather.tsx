@@ -1,52 +1,45 @@
-import React from "react";
-import { useGeolocated } from 'react-geolocated';
-import { request } from "graphql-request";
-import useSWR from 'swr';
-import { weatherByLocationQuery } from './Weather.query';
-import { ContentArea } from '@components/atoms/ContentArea';
+import React, { useEffect, useState } from "react";
+import { useGeolocated } from "react-geolocated";
+import { getWeatherByLocation, getWeatherByZipCode } from "../../api/api";
+import { WeatherInfo, WeatherInfoProps } from "@molecules/WeatherInfo";
+import { ZipCodeSearch } from "@components/molecules/ZipCodeSearch";
 
 export function Weather() {
-  const apiEndpoint = "http://localhost:4000/graphql";
-  const { 
-      coords, 
-      isGeolocationAvailable,
-      isGeolocationEnabled 
-  } = useGeolocated({
-        positionOptions: {
-          enableHighAccuracy: false,
-        },
-        userDecisionTimeout: 5000,
+  const [currentWeather, setCurrentWeather] = useState<WeatherInfoProps>({
+    weather: { temp: "", description: "", iconUrl: "", main: "", city: "" },
   });
 
+  const { coords } =
+    useGeolocated({
+      positionOptions: {
+        enableHighAccuracy: false,
+      },
+      userDecisionTimeout: 5000,
+    });
 
+  useEffect(() => {
+    const getCurrentWeather = async () => {
+      const weatherData = await getWeatherByLocation(coords?.latitude, coords?.longitude);
+      setCurrentWeather({...weatherData});
+    };
+    getCurrentWeather();
+  }, [coords]);
 
-  const { data: currentWeather, error } = useSWR(weatherByLocationQuery, (query) =>
-    request(apiEndpoint, query, { lat: 20.6329313, lon: -103.4840859 })
-  );
-  
-  console.log('weather --- ', currentWeather);
-  console.log('error --- ', error);
+  const getWeatherByCity = async (zipCode: string) => {
+    const weatherData = await getWeatherByZipCode(zipCode)
+    setCurrentWeather({...weatherData});
+  }
+
+  const { weather } = currentWeather;
+
+  if(!weather.temp) {
+    return;
+  }
 
   return (
     <div>
-      <div>{coords?.latitude} {coords?.longitude}</div>
-      <ContentArea bgColor="blue">
-        hello!
-      </ContentArea>
+      <WeatherInfo weather={{ ...weather }} />
+      <ZipCodeSearch onSearch={getWeatherByCity} />
     </div>
-  )
-}
-
-
-export async function getServerSideProps() {
-  return {
-    props: {
-      weather: {
-        id: 804,
-        main: "Clouds",
-        description: "overcast clouds",
-        icon: "04n",
-      },
-    },
-  };
+  );
 }

@@ -13,9 +13,6 @@ export const getCoordinatesByZipCode = (zipCode: string) => {
 export const getWeatherByZipCode = async (zipCode: string) => {
     const locationInfoRes = await getCoordinatesByZipCode(zipCode);
     const locationInfo:LocationInfo  = locationInfoRes?.body;
-    console.log("locationInfo ------>");
-    console.log(locationInfoRes.body);
-
 
     return request.get(constants.openWeatherApi)
     .query({

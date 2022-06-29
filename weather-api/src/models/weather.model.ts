@@ -12,7 +12,7 @@ export class WeatherInfo {
     description!: string;
 
     @Field()
-    icon!: string;
+    iconUrl!: string;
 
     @Field()
     temp!: number;
@@ -37,6 +37,9 @@ export class WeatherInfo {
 
     @Field()
     grnd_level!: number;
+
+    @Field()
+    city!: string; 
 
 }
 

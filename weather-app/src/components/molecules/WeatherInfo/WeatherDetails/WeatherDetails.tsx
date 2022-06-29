@@ -1,36 +1,53 @@
-import React from 'react'
+import React from "react";
 import { Text } from "@atoms/Text";
 import { WeatherIcon } from "@atoms/WeatherIcon";
-import styles from '../WeatherInfo.module.scss';
+import { WeatherInfoDataProps } from "../WeatherInfo.types";
+import styles from "../WeatherInfo.module.scss";
 
-export interface WeatherInfoProps {
-    temp: string;
-    mainly: string;
-    description: string;
-    iconUrl: string;
-}
-
-export function WeatherDetails({ temp, mainly, description, iconUrl }: WeatherInfoProps) {
-    return (
-        <div className={styles.weatherInfoArea}>
-            <div className={styles.weatherInfoMarginBottom}>
-                <Text size="small" value="Temperature ..." />
-                <Text className={styles.weatherInfoMarginLeft} size="small" value={temp} />
-            </div>
-            <div>
-                <Text size="small" value="Mainly ..." />
-                <Text className={styles.weatherInfoMarginLeft} size="small" value={mainly} />
-            </div>
-            <div className={styles.weatherInfoDescription}>
-                <Text size="small" value="Description ..." />
-                <Text className={styles.weatherInfoMarginLeft} size="small" value={description} />
-                <div className={styles.weatherInfoIcon}>
-                    <WeatherIcon
-                        url={iconUrl}
-                        description={description}
-                    />
-                </div>
-            </div>
+export function WeatherDetails({
+  temp,
+  main,
+  description,
+  iconUrl,
+  city,
+}: WeatherInfoDataProps) {
+  return (
+    <div className={styles.weatherInfoArea}>
+      <div className={styles.weatherInfoMarginBottom}>
+        <Text size="small" value="Temperature ..." />
+        <Text
+          className={styles.weatherInfoMarginLeft}
+          size="small"
+          value={temp}
+        />
+      </div>
+      <div className={styles.weatherInfoMarginBottom}>
+        <Text size="small" value="City ..." />
+        <Text
+          className={styles.weatherInfoMarginLeft}
+          size="small"
+          value={city}
+        />
+      </div>
+      <div>
+        <Text size="small" value="Mainly ..." />
+        <Text
+          className={styles.weatherInfoMarginLeft}
+          size="small"
+          value={main}
+        />
+      </div>
+      <div className={styles.weatherInfoDescription}>
+        <Text size="small" value="Description ..." />
+        <Text
+          className={styles.weatherInfoMarginLeft}
+          size="small"
+          value={description}
+        />
+        <div className={styles.weatherInfoIcon}>
+          <WeatherIcon url={iconUrl} description={description} />
         </div>
-    )
+      </div>
+    </div>
+  );
 }

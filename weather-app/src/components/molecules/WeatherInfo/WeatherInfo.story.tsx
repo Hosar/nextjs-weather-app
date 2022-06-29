@@ -5,11 +5,16 @@ const definition = {
   component: Text,
 };
 
-export default definition;
 
-export const WeatherInformation = () => 
-  <WeatherInfo
-    temp="24"
-    description="broken clouds" 
-    mainly="Clouds"
-    iconUrl="http://openweathermap.org/img/wn/10d@2x.png" />;
+const weather = {
+  main: 'Clouds',
+  temp: "24",
+  description:"broken clouds" ,
+  mainly:"Clouds",
+  iconUrl:"http://openweathermap.org/img/wn/10d@2x.png",
+} 
+
+export const WeatherInformation = () => <WeatherInfo weather={{...weather}} />;
+    
+    
+export default definition;

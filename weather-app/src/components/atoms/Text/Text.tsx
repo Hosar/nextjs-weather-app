@@ -17,8 +17,8 @@ interface TextProps {
 export function Text({ value, size = 'small', className, ...props }: TextProps) {
   return (
     <span
-      className={cn(styles.textContent, styles[TextSize[size]], className)}
-      {...props}
+    {...props}
+    className={cn(styles.textContent, styles[TextSize[size]], className)}
     >
       {value}
     </span>

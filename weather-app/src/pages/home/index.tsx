@@ -3,6 +3,7 @@ import useSWR from 'swr'
 import Head from 'next/head'
 import Image from 'next/image'
 import { Input } from '@atoms/Input';
+import { Text } from '@atoms/Text';
 import styles from '../../../styles/Home.module.css'
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
@@ -34,6 +35,7 @@ const Home: NextPage = () => {
         </div>
         <div>
         <Input />
+        <Text value='Hola' />
         </div>
       </main>
 

@@ -20,6 +20,10 @@
       "@pages/*": ["pages/*"],
       "@atoms/*": ["components/atoms/*"],
       "@molecules/*": ["components/molecules/*"],
+      "@queries/*": ["queries/*"],
+      "@constants/*": ["common/constants.ts"],
+      "@hooks/*": ["hooks/*"],
+      "@api/*": ["api/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

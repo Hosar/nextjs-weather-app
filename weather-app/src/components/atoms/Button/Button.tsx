@@ -1,9 +1,10 @@
 import React from 'react'
 
-export function Button({text, ...props}: {text:string}) {
+export function Button({text, ...props}: {text:string, [x:string]: any;}) {
   return (
     <button 
-        type="button" 
+        type="button"
+        {...props}
         className="inline-block 
                    px-6 
                    py-2.5 

@@ -1,7 +1,9 @@
 import { constants } from "../common/constants";
 
-export const getWeatherResponse = (weather: any, main: any) => {
-    const { icon } = weather;
+export const getWeatherResponse = (weatherData: any) => {
+    console.log(weatherData);
+    const { weather, main, name: city } = weatherData; 
+    const { icon } = weather[0];
     const iconUrl = `${constants.openWeatherImg}/${icon}@2x.png`;
-    return {...weather, ...main, ...{icon: iconUrl}};
+    return {...weather[0], ...main, ...{iconUrl}, city };
 };
